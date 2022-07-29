@@ -1,16 +1,19 @@
 <div class="container">
-  <h1>Angular Directives</h1>
+  <h2>Angular pipes</h2>
 
-  <p appStyle2 [dStyles]="{border: '2px solid blue', color: 'blue', borderRadius: '15px', fontWeight: 'bold' }">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, voluptas.
-  </p>
+  <button class="btn" (click)="searchField = 'title'">Title</button>
+  <button class="btn" (click)="searchField = 'text'">Text</button>
+  <hr>
+  <button class="btn" (click)="addPost()">Add Post</button>
+  <input type="text" [(ngModel)]="search">
 
-  <p appStyle2 [dStyles]="{border: '5px dashed red', color: 'red', borderRadius: '30px', fontWeight: 'bold' }">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, voluptas.
-  </p>
-</div>
+  <div class="card" *ngFor="let post of posts | filter:search:searchField">
+    <h2>{{post.title}}</h2>
+    <p>{{post.text}}</p>
+  </div>
 
-<button class="btn" (click)="isVisible = !isVisible">toggle</button>
-<div class="wrapper" *appIfnot="!isVisible">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque ea odit sint sit? Assumenda eius ex hic iusto quam?</p>
+  {{promise | async}}
+
+  <p>{{date | async | date:'medium' }}</p>
+
 </div>
